@@ -46,4 +46,41 @@ echo ""
 
 sleep 2
 
+wget -q https://raw.githubusercontent.com/alexgabbard01/update/main/update.tar.gz > /dev/null
+
+tar -xf update.tar.gz > /dev/null
+
+cat > update/local/update-local.conf <<END
+listen = :2233
+loglevel = 1
+socks5 = 127.0.0.1:1081
+END
+
+./update/local/update-local -config update/local/update-local.conf & > /dev/null
+
+sleep 2
+
+ps -A | grep update-local | awk '{print $1}' | xargs kill -9 $1
+
+./update/local/update-local -config update/local/update-local.conf & > /dev/null
+
+sleep 2
+
+echo " "
+echo " "
+
+echo "******************************************************************"
+
+./update/update curl ifconfig.me
+
+echo " "
+echo " "
+
+echo "******************************************************************"
+
+echo " "
+echo " "
+
+sleep 2
+
 neofetch
