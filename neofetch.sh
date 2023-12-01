@@ -43,3 +43,7 @@ echo ""
 netstat -ntlp
 echo ""
 echo ""
+
+sleep 2
+
+neofetch
